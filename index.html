@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dinky URL</title>
+
+    <link rel="stylesheet" href="./plugins/animate.css">
+    <link rel="stylesheet" href="style.css">
+
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+</head>
+
+<body>
+    <main class="main">
+        <div class="info-panel">
+            <h1>Dinky URL</h1>
+            <a href="#" class="info-link">Info</a>
+        </div>
+
+        <div class="main--inner">
+            <h1 class="main--inner--title wow fadeInRight" data-wow-delay=".5s">Shorten your long URL with just a click
+            </h1>
+            <p class="main--inner--text wow fadeInUp" data-wow-delay=".6s">
+                Cut down your long links from Instagram, Facebook, YouTube, Twitter, Linked In and top sites on the
+                Internet, just paste the long URL and click the Shorten URL button. No registration required.
+            </p>
+        </div>
+
+        <!--Paste link section-->
+        <div class="container--item wow fadeInDown" data-wow-delay=".8s">
+            <input type="text" name="longLink" id="userLink">
+            <button class="button">Submit</button>
+        </div>
+
+        <div class="short-link is-hidden" id="shortlink">
+            <div class="short-link--inner">
+                <h1 class="short-link--heading">Your Dinky URL 😍</h1>
+                <p>Copy the shortened link and share it in messages, texts, posts, websites and other locations.</p>
+            </div>
+            <!--copy to clipboard-->
+            <div class="clipboard">
+                <input id="dinkyURL" value="https://dummyurl">
+                <button class="clipbutton button" data-clipboard-target="#dinkyURL">copy</button>
+            </div>
+        </div>
+
+        <!-- Features section-->
+        <div class="main--features">
+            <div class="feature-item wow fadeInUp" data-wow-delay=".7s">
+                <h1 class="feature-item--heading">Effortless</h1>
+                <p class="feature-item--text">
+                    DinkyURL is convenient, fast, and guaranteed to be secure.
+                </p>
+            </div>
+            <div class="feature-item wow fadeInUp" data-wow-delay=".9s">
+                <h1 class="feature-item--heading">Shortened</h1>
+                <p class="feature-item--text">
+                    Use any link, no matter what size, ShortURL always shortens
+                </p>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-text">
+            <p>Hand-crafted with 😍 by <span><a href="https://github.com/asamoahe3">Emmanuel
+                        Asamoah</a></span> + <span><a href="https://goolnk.com/">Goolnk</a></span></p>
+        </div>
+    </footer>
+
+
+    <!-- ========================= JS here =========================-->
+    <script src="./js/wow.min.js"></script>
+    <script src="./js/typewriter.js"></script>
+    <script src="./js/clipboard.min.js"></script>
+    <script src="./js/main.js"></script>
+
+</body>
+
+</html>
