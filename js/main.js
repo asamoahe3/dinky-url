@@ -6,7 +6,7 @@
     button.addEventListener("click", () => {
         const regexURL = /[(http(s)?):\/\/(www\.)?a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/gim
         if (regexURL.test(userURL.value) === false) {
-            swal({
+            return swal({
                 title: "Sorry",
                 text: "Its eiter you paste or typed in a wrong URL or perharps you enter nothing at all. Kinly check the link and try again",
                 icon: "error",
