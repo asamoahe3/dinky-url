@@ -1,45 +1,38 @@
 (function () {
     const button = document.querySelector('button');
     const userURL = document.getElementById("userLink");
-    const shortLink = document.getElementById("shortlink");
+    const setShortenLink = document.getElementById("shortlink");
 
     button.addEventListener("click", () => {
         const regexURL = /[(http(s)?):\/\/(www\.)?a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/gim
         if (regexURL.test(userURL.value) === false) {
             return swal({
                 title: "Sorry",
-                text: "Its eiter you paste or typed in a wrong URL or perharps you enter nothing at all. Kinly check the link and try again",
+                text: "You may have entered the incorrect or no URL. Please review your link and try again.",
                 icon: "error",
                 button: "OK",
             })
         } else {
+            async function getData() {
+                try {
+                    const response = await fetch("https://api.shrtco.de/v2/shorten?url=" + `${userURL.value}`);
+                    let data = await response.json();
+                    let getShortLink = data.result.short_link2;
 
-            let longURL = userURL.value;
-            const encodedParams = new URLSearchParams();
-            encodedParams.append("url", longURL);
+                    setShortenLink.classList.remove('is-hidden');
+                    document.getElementById("dinkyURL").value = getShortLink;
+                    console.log(getShortLink);
 
-            const options = {
-                method: 'POST',
-                headers: {
-                    'content-type': 'application/x-www-form-urlencoded',
-                    'X-RapidAPI-Key': '68741cbd14mshd7b5516338806aep14cef8jsnafa7cf444a17',
-                    'X-RapidAPI-Host': 'url-shortener-service.p.rapidapi.com'
-                },
-                body: encodedParams
-            };
-
-            fetch('https://url-shortener-service.p.rapidapi.com/shorten', options)
-                .then((response) => response.json())
-                .then((response) => {
-                    const data = JSON.stringify(response, undefined, 4);
-                    const str = JSON.parse(data, undefined, 4);
-                    const { result_url } = str;
-                    shortLink.classList.remove('is-hidden');
-                    document.getElementById("dinkyURL").value = result_url;
-                })
-                .catch(function (err) {
-                    console.error(err);
-                });
+                } catch (error) {
+                    return swal({
+                        title: "Sorry",
+                        text: "You have attempted to add a URL that does not follow the general URL shortening rules. We have therefore excluded it from the text length calculation.",
+                        icon: "info",
+                        button: "OK",
+                    })
+                }
+            }
+            getData();
         }
     })
 
