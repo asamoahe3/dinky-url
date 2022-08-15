@@ -5,6 +5,7 @@
 
     button.addEventListener("click", () => {
         const regexURL = /[(http(s)?):\/\/(www\.)?a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/gim
+
         if (regexURL.test(userURL.value) === false) {
             return swal({
                 title: "Sorry",
@@ -12,6 +13,7 @@
                 icon: "error",
                 button: "OK",
             })
+
         } else {
             async function getData() {
                 try {
